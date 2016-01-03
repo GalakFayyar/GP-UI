@@ -1,0 +1,295 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+#map {
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    /*width: calc(100% - 195px);*/
+    width: 100%;
+    height: calc(100% - 85px);
+}
+body {
+    padding-top: 50px;
+}
+input[type="radio"], input[type="checkbox"] {
+    margin: 0;
+}
+section aside {
+    position: absolute;
+    overflow: auto;
+    top: 50px;
+    left: 0;
+    bottom: 0px;
+    width: 195px;
+    padding: 10px;
+    background: rgba(204,204,204,0.4);
+    border-right: 1px solid rgba(194,194,194,0.4);
+}
+section article {
+    /*float: left;*/
+    /*margin-left: 195px;*/
+    margin-bottom: 10px;
+    margin-right: 10px;
+    background: #FFFFFF;
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+}
+header {
+    /*background: #BBB;*/
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+header .navbar-header {
+    color: #FFF !important;
+}
+header .header-container {
+    margin-left: 15px;
+    max-width: 400px;
+    float: left;
+}
+#loading {
+    position: absolute;
+    width: 220px;
+    height: 19px;
+    top: 50%;
+    left: 50%;
+    margin: -10px 0 0 -110px;
+    z-index: 20001;
+}
+.leaflet-control-layers label {
+    font-weight: normal;
+    margin-bottom: 0px;
+}
+.table {
+    margin-bottom: 0px;
+}
+.navbar-title {
+    margin: 5px 15px;
+    float: left;
+    font-weight: bold;
+    font-size: 25px;
+    color: white !important;
+}
+.leaflet-popup-content {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.leaflet-popup-content-wrapper {
+    border-radius: 5px;
+}
+.leaflet-sidebar {
+    z-index: 1020;
+}
+
+
+@media (max-width: 992px) {
+    .navbar .navbar-brand {
+        font-size: 18px;
+    }
+}
+@media (max-width: 767px){
+    .url-break {
+        word-break: break-all;
+        word-break: break-word;
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+}
+/* Print Handling */
+@media print {
+    .navbar {
+        display: none !important;
+    }
+    .leaflet-control-container {
+        display: none !important;
+    }
+}
+/* Custom CSS */
+.main-sidebar .header-section {
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.navbar .navbar-brand {
+    font-weight: bold;
+    font-size: 25px;
+    color: #FFF;
+}
+.custom-navbar-right {
+    float: right;
+    margin-right: 15px;
+}
+.custom-form-control {
+    display: inline-block;
+    width: 200px;
+    margin-top: 7px;
+}
+.clear {
+    background: none;
+    border: medium none;
+    cursor: pointer;
+    padding: 5px 0;
+    position: absolute;
+    right: 26px;
+    top: 7px;
+    color: #337AB7;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.ui-select-match {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 88%;
+    line-height: 13px;
+}
+#select-activite-connexes {
+    position: fixed;
+    right: 212px;
+    top: 47px;
+    background: #222;
+    padding: 2px 7px;
+    border-radius: 0 0 3px 3px;
+}
+.header-panier {
+    padding: 7px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.grid {
+    width: 490px;
+    height: 550px;
+    overflow: hidden;
+}
+.leaflet-sidebar {
+    /*height: auto !important;*/
+}
+.leaflet-sidebar.right.visible {
+    width: 550px;
+}
+.leaflet-sidebar.right.visible ~ .leaflet-right {
+    right: 550px !important;
+}
+.leaflet-sidebar.left.visible {
+    width: 340px;
+}
+.leaflet-sidebar.left.visible ~ .leaflet-left {
+    right: 340px !important;
+}
+.btn-group-panier {
+    float: right;
+    text-align: right;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+#commune-title{
+    position: fixed;
+    z-index: 1021;
+    display: none;
+    bottom: 35px;
+    left: 15px;
+    padding: 10px;
+    background: rgba(255,255,255,0.7);
+}
+.gris {
+    color: #CCC !important;
+}
+.toggle-client {
+    display: inline-block;
+    margin-top: 10px;
+    vertical-align: top;
+}
+.custom-popup {
+    position: fixed;
+    top: 65px;
+    left: 15px;
+    width: auto;
+    z-index: 1001;
+}
+.main-footer {
+    z-index: 1022;
+    padding: 7px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
+    background: #EEE;
+}
+.modal-body.help {
+    max-height: 550px;
+    overflow-y: auto;
+
+}
+.custom-comment-result {
+    padding: 7px;
+    margin-top: 7px;
+    border-radius: 4px;
+    text-align: center;
+}
+#buttonLegend {
+    background: rgba(255,255,255,0.7);
+    padding: 7px;
+    position: fixed;
+    right: 10px;
+    top: 130px;
+    border: solid 1px rgba(174,174,174,0.7);
+}
+#mainLegend {
+    background: rgba(255,255,255,0.5);
+    padding: 7px;
+    position: fixed;
+    right: 10px;
+    top: 170px;
+    border: solid 1px rgba(154,154,154,0.5);
+    width: 175px;
+    overflow: auto;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    bottom: 50px;
+    max-height: 545px;
+}
+#mainLegend .table-legend tr{
+    margin-bottom: 3px;
+}
+#mainLegend .table-legend td{
+    padding: 0px 5px;
+    height: 15px;
+    line-height: 20px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+#mainLegend .awesome-marker{
+    position: relative !important;
+}
+.circle-green {
+    background: transparent;
+    border: solid 3px #0f0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.circle-blue {
+    background: transparent;
+    border: solid 3px #00f;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.circle-black {
+    background: transparent;
+    border: solid 3px #333;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin: 0 auto;
+}

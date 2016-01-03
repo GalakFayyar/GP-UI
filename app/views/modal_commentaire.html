@@ -1,0 +1,25 @@
+<div class="modal-header"><h3 class="modal-title">Ajouter un Commentaire</h3></div>
+<div class="modal-body">
+	<div class="form-group">
+		<label class="sr-only" for="nom">Nom</label>
+		<input type="text" class="form-control" id="nom" placeholder="Nom" ng-model="user.nom">
+	</div>
+
+	<div class="form-group">
+		<label class="sr-only" for="prenom">Prénom</label>
+		<input type="text" placeholder="Prénom" class="form-control" ng-model="user.prenom" >
+	</div>
+
+	<div class="form-group">
+		<label class="sr-only" for="fonction">Fonction</label>
+		<input type="text" placeholder="Fonction" class="form-control" ng-model="user.fonction" >
+	</div>
+	<textarea placeholder="Ajouter un commentaire" class="form-control" ng-model="user.commentaire"></textarea>
+	<div class="custom-comment-result" ng-class="comment_result.status == 'error' ? 'bg-danger' : 'bg-success'" ng-show="comment_result.status" ng-bind-html="comment_result.message">
+		{{comment_result.message}}
+	</div>
+</div>
+<div class="modal-footer">
+	<button type="submit" class="btn btn-primary" ng-click="send()">Envoyer</button>
+	<button class="btn btn-warning" ng-click="cancel()">Annuler</button>
+</div>

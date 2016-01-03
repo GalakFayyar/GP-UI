@@ -1,0 +1,29 @@
+<div class="btn-group-panier">
+	<div class="btn-group">
+		<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-disabled="!activite.selected">
+			Ajout au panier <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li ng-show="circle_chalandise"><a href ng-click="addZoneChalandisePanier()">Contenu de la zone</a></li>
+			<li><a href ng-click="addScreenLocalitePanier()">Contenu de l'écran</a></li>
+		</ul>
+	</div>
+
+	<div class="btn-group">
+		<button class="btn btn-default btn-sm dropdown-toggle" ng-disabled="gridOptions.data.length == 0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Exporter <span class="caret"></span>
+		</button>
+		<ul class="dropdown-menu">
+			<li><a href ng-click="exportPanierLocalitesCSV()">en CSV</a></li>
+			<!--<li><a href ng-click="exportPanierLocalitesPDF()">en PDF</a></li>-->
+		</ul>
+	</div>
+
+	<button ng-click="removeLocalitePanier()" type="button" class="btn btn-danger btn-sm" ng-disabled="gridApi.selection.getSelectedRows().length == 0">Supprimer</button>
+	<button ng-click="viderPanierLocalites()" type="button" class="btn btn-warning btn-sm" ng-disabled="gridOptions.data.length == 0">Vider</button>
+</div>
+<h1>Panier</h1>
+<div>
+	<p class="bg-primary header-panier">Audiences Activités</p>
+	<div ui-grid="gridOptions" ui-grid-grouping ui-grid-pagination ui-grid-selection ui-grid-exporter class="grid"></div>
+</div>

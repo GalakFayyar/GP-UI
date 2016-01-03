@@ -1,0 +1,21 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "name": "geopro",
+  "description": "GeoPro project GUI",
+  "author": "Thomas Falcher",
+  "devDependencies": {
+    "http-server": "^0.6.1",
+    "bower": "^1.3.1"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~4.12.2",
+    "compression": "~1.4.1",
+    "http-proxy": "~1.8.1"
+  }
+}

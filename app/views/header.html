@@ -1,0 +1,108 @@
+<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">GeoPro</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+        <form class="custom-navbar-right" role="search">
+            <div class="navbar-right">
+                <ui-select  ng-change="selectEtablissement(true)"
+                            ng-model="etablissement.selected"
+                            theme="selectize"
+                            ng-disabled="disabled"
+                            reset-search-input="true"
+                            class="custom-form-control" 
+                            style="display:inline-block;width:270px">
+                    <ui-select-match placeholder="Entrer un Etablissement">
+                        {{$select.selected.libelle}}
+                        <button class="clear glyphicon glyphicon-remove" ng-click="clear_etablissement($event, etablissement)"></button>
+                    </ui-select-match>
+                    <ui-select-choices repeat="etablissement in list_etablissements | propsFilter: {libelle: $select.search, no_etab: $select.search} | limitTo: 20 track by etablissement.no_etab"
+                            refresh="refreshEtablissement($select.search)"
+                            refresh-delay="0">
+                        <div ng-bind-html="etablissement.libelle | highlight: $select.search"></div>
+                        <small ng-bind-html="''+etablissement.no_etab | highlight: $select.search"></small>
+                    </ui-select-choices>
+                </ui-select>
+                
+                <ui-select  ng-change="selectActivite()"
+                            focus-on="SelectFocusActivite"
+                            ng-model="activite.selected"
+                            theme="selectize"
+                            ng-disabled="activite_connexe.selected"
+                            reset-search-input="true"
+                            class="custom-form-control" 
+                            style="display:inline-block;width:300px">
+                    <ui-select-match placeholder="Entrer une Activité">
+                        {{$select.selected.activite}}
+                        <button class="clear glyphicon glyphicon-remove" ng-click="clear_activite($event, activite)"></button>
+                    </ui-select-match>
+                    <ui-select-choices repeat="activite in list_activites | limitTo: 50"
+                            refresh="refreshActivite($select.search)"
+                            refresh-delay="0">
+                        <div ng-bind-html="activite.activite | highlight: $select.search"></div>
+                        <small ng-bind-html="''+activite.code_rubrique | highlight: $select.search"></small>
+                    </ui-select-choices>
+                </ui-select>
+
+                <ui-select  ng-change="selectCommune()"
+                            DISABLEDfocus-on="SelectFocusCommune"
+                            ng-model="commune.selected"
+                            theme="selectize"
+                            ng-disabled="!activite.selected"
+                            reset-search-input="true"
+                            class="custom-form-control" 
+                            style="display:inline-block;width:200px">
+                    <ui-select-match placeholder="Entrer une Commune">
+                        {{$select.selected.libelle}}
+                        <button class="clear glyphicon glyphicon-remove" ng-click="clear_commune($event, commune)"></button>
+                    </ui-select-match>
+                    <!-- <ui-select-choices repeat="commune in list_communes | propsFilter: {libelle: $select.search, code_commune: $select.search} | limitTo: 50" -->
+                    <ui-select-choices repeat="commune in list_communes | limitTo: 50" 
+                        refresh="refreshCommune($select.search)"
+                        refresh-delay="0">
+                        <div ng-bind-html="commune.libelle | highlight: $select.search"></div>
+                        <small ng-bind-html="''+commune.code_commune | highlight: $select.search"></small>
+                    </ui-select-choices>
+                </ui-select>
+                <!--<span id="searchicon" class="fa fa-search form-control-feedback"></span>-->
+            </div>
+        </form>
+
+        <ul class="nav navbar-nav">
+            <li>
+                <a href="#" ng-click="toggleSidebarFiltres()"><i class="fa fa-list" style="color:white"></i>&nbsp;Filtres</a>
+            </li>
+            <li>
+                <a href="#" ng-click="toggleSidebarPanier()"><i class="fa fa-list" style="color:white"></i>&nbsp;Panier</a>
+            </li>
+            <li>
+                <toggle-switch style="margin-top:10px;" knob-label="Vision" on-label="Client" off-label="Commercial" ng-model="switchStatusClient.value" ng-change="switchStatusClient()" title="" ng-disabled=""><toggle-switch>
+            </li>
+        </ul>
+    </div>
+    <div id="select-activite-connexes" ng-show="list_activites_connexes.length > 0">
+        <ui-select  ng-change="selectActiviteConnexe()"
+                    ng-model="activite_connexe.selected"
+                    theme="selectize"
+                    fdfng-disabled="!activite.selected || list_activites_connexes.length == 0"
+                    reset-search-input="true"
+                    class="custom-form-control" 
+                    style="display:inline-block;width:300px">
+            <ui-select-match placeholder="Activité connexe">
+                {{$select.selected.libelle}}
+                <button class="clear glyphicon glyphicon-remove" ng-click="clear_activite_connexe($event, activite)"></button>
+            </ui-select-match>
+            <ui-select-choices repeat="activite in list_activites_connexes | propsFilter: {libelle: $select.search, code_rubrique: $select.search} | limitTo: 20">
+                <div ng-bind-html="activite.libelle | highlight: $select.search"></div>
+                <small ng-bind-html="''+activite.code_rubrique | highlight: $select.search"></small>
+            </ui-select-choices>
+        </ui-select>
+    </div>
+</div><!--/.navbar-collapse -->

@@ -1,0 +1,86 @@
+<h1>Filtres</h1>
+
+<form>
+	<div class="form-group">
+		<a href style="float:right" ng-click="clearZoneChalandise()">effacer</a>
+		<label for="exampleInputEmail1">Zone de chalandise (km)</label>
+		<slider class="form-control" ng-model="zoneChalandise.selected" min="zoneChalandise.min" step="zoneChalandise.step" max="zoneChalandise.max" value="zoneChalandise.value" ng-change="drawZoneChalandise()" ng-disabled="!typeZone.selected"></slider>
+		<div style="margin-top:15px">
+			<label>Centre Zone de chalandise</label>
+			<div class="form-group">
+				<label class="radio-inline">
+					<input type="radio" name="inlineRadioOptions" id="chalandiseEtablissement" ng-model="typeZone.selected" value="etablissement" ng-checked="etablissement.selected" ng-disabled="!etablissement.selected"> <span ng-class="{gris: !etablissement.selected}">Etablissement</span>
+				</label>
+				<label class="radio-inline">
+					<input type="radio" name="inlineRadioOptions" id="chalandiseLocalite" ng-model="typeZone.selected" value="localite" ng-checked="commune.selected" ng-disabled="!commune.selected"> <span ng-class="{gris: !commune.selected}">Localité</span>
+				</label>
+			</div>
+		</div>
+		<div style="margin-top:15px">
+			<label>Filtres d'affichage</label>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="filtres.display_all_etab" ng-change="manageFilters('all')" ng-disabled="!activite.selected"> <span ng-class="{gris: !activite.selected}"><b>Etablissements</b> pour cette activité</span>
+				</label>
+			</div>
+			<div class="checkbox" style="margin-left:20px !important">
+				<label>
+					<input type="checkbox" ng-model="filtres.display_etab_prospects" ng-change="manageFilters('prospects')" ng-disabled="!activite.selected"> <span ng-class="{gris: !activite.selected}"><b>Prospects</b></span>
+				</label>
+			</div>
+			<div class="checkbox" style="margin-left:20px !important">
+				<label>
+					<input type="checkbox" ng-model="filtres.display_etab_clients" ng-change="manageFilters('clients')" ng-disabled="!activite.selected"> <span ng-class="{gris: !activite.selected}"><b>Clients</b></span>
+				</label>
+			</div>
+		</div>
+		<div style="margin-top:15px">
+			<label>Parutions</label>
+			<div style="float:right">
+				<toggle-switch ng-model="switchStatusParution.value" ng-change="manageParutionSwitch()" title="Sélectionner une activité et un établissement pour activer la parution" ng-disabled="!etablissement.selected || !activite.selected"><toggle-switch>
+			</div>
+
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="polpo" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.polpo"> <span ng-class="{gris: !switchStatusParution.value || !display.polpo}">POLPO</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="cvip" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.cvip"> <span ng-class="{gris: !switchStatusParution.value || !display.cvip}">CVIP</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="cvi" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.cvi"> <span ng-class="{gris: !switchStatusParution.value || !display.cvi}">CVI</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="acces" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.acces"> <span ng-class="{gris: !switchStatusParution.value || !display.acces}">ACCES</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="lvs" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.lvs"> <span ng-class="{gris: !switchStatusParution.value || !display.lvs}">LVS</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="bon_plan" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.bon_plan"> <span ng-class="{gris: !switchStatusParution.value || !display.bon_plan}">BON PLAN</span>
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" ng-model="filtres.display_parution" value="lien_transac" ng-change="manageFiltersParution()" ng-disabled="!switchStatusParution.value || !display.lien_transac"> <span ng-class="{gris: !switchStatusParution.value || !display.lien_transac}">LIEN TRANSAC</span>
+				</label>
+			</div>
+
+			<h5>Départementales</h5>
+
+			<div class="alert alert-info" role="alert">
+				Parution pour le produit {{filtres.display_parution}} sur le(s) département(s) <span ng-repeat="departement in departements_concernes_parution"><b>{{departement}}</b> </span>
+			</div>
+		</div>
+	</div>
+</form>
